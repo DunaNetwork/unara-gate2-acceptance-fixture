@@ -10,9 +10,9 @@ contract InvestigationTarget {
     uint256 public balance;
 
     function deposit(uint256 amount) external {
-        balance = amount;
-        emit Deposited(msg.sender, amount);
-        if (amount > CAP) revert CapExceeded(amount, CAP);
+        uint256 accepted = amount > CAP ? CAP : amount;
+        balance = accepted;
+        emit Deposited(msg.sender, accepted);
     }
 
     function withdraw(uint256 amount) external {
