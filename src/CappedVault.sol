@@ -6,6 +6,7 @@ contract CappedVault {
     uint256 public balance;
 
     function deposit(uint256 amount) external {
-        balance += amount;
+        uint256 accepted = amount > CAP ? CAP : amount;
+        balance += accepted;
     }
 }

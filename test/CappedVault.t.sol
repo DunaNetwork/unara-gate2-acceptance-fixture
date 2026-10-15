@@ -15,4 +15,11 @@ contract CappedVaultTest is Test {
         vault.deposit(amount);
         assertLe(vault.balance(), vault.CAP());
     }
+
+    /// @notice UNARA kept-regression v1
+    /// @dev review accepted. Source failure d2600bbf-845b-4ec5-9e9a-4d76431510db. Minimized counterexample 101.
+    function test_regression_depositRespectsCap() public {
+        vault.deposit(101);
+        assertLe(vault.balance(), vault.CAP());
+    }
 }
