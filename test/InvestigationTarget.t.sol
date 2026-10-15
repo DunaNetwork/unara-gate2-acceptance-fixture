@@ -12,6 +12,7 @@ contract InvestigationTargetTest is Test {
     }
 
     function test_standardRevert() public {
+        vm.expectRevert(bytes("insufficient balance"));
         target.withdraw(1);
     }
 
