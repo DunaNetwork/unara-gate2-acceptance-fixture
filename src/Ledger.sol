@@ -17,10 +17,6 @@ contract Ledger {
 
     function withdraw(uint256 amount) external {
         balances[msg.sender] -= amount;
-        if (marks >= 2 && amount > 1) {
-            total -= amount - 1;
-        } else {
-            total -= amount;
-        }
+        total -= amount;
     }
 }
